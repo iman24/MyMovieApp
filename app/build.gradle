@@ -6,14 +6,16 @@ plugins {
     id 'androidx.navigation.safeargs'
 }
 
+apply from: '../shared_dependencies.gradle'
+
 android {
     namespace 'com.imanancin.mymoviedb'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.imanancin.mymoviedb"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -22,7 +24,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -42,44 +44,17 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation project(":core")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Networking
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
-
-    // koin
-    implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-android:$koin_android_version"
-
-    // room
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.room:room-paging:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-
-    //paging
-    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
-
-    // coil
-    implementation "io.coil-kt:coil:2.2.2"
-
-    //architecture component
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // leak canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
     // navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-
+    def nav_version = '2.5.2'
+    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    api "androidx.navigation:navigation-ui-ktx:$nav_version"
+    api "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
 
 

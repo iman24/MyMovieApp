@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.imanancin.mymoviedb.presentation.home.fragment.HomeFragment"
+        android:name="com.imanancin.mymoviedb.ui.home.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.imanancin.mymoviedb.presentation.home.fragment.FavoriteFragment"
+        android:name="com.imanancin.favorite.ui.FavoriteFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoriteFragment_to_detailActivity"
             app:destination="@id/detailActivity" />
@@ -27,18 +27,18 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.imanancin.mymoviedb.presentation.home.fragment.AboutFragment"
+        android:name="com.imanancin.mymoviedb.ui.home.fragment.AboutFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home"/>
 
     <activity
         android:id="@+id/detailActivity"
-        android:name="com.imanancin.mymoviedb.presentation.detail.DetailActivity"
+        android:name="com.imanancin.mymoviedb.ui.detail.DetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail" >
         <argument
             android:name="movie"
-            app:argType="com.imanancin.mymoviedb.core.domain.model.Movie" />
+            app:argType="com.imanancin.core.domain.model.Movie" />
     </activity>
 
 </navigation>
