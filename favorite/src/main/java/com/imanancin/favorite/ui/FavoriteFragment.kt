@@ -35,7 +35,7 @@ class FavoriteFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        return _binding?.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,6 +66,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        binding?.rvMovieFavorite?.adapter = null
         _binding = null
     }
 }

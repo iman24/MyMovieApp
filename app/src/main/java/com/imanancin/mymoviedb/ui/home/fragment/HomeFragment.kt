@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return _binding?.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
             adapter = movieAdapter
         }
 
-        viewModels.setMovieType(MovieType.NOW_PLAYING)
+        currentCategory.value?.let { viewModels.setMovieType(it) }
         currentCategory.value = MovieType.valueOf(MovieType.NOW_PLAYING.name)
         viewModels.movies().observe(viewLifecycleOwner) {
             Log.e("TAG", "setupAdapter: ", )
@@ -96,5 +96,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        binding?.rvMovie?.adapter = null
+        _binding = null
+    }
 }
