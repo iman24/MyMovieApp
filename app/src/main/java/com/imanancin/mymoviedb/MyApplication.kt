@@ -1,8 +1,11 @@
 package com.imanancin.mymoviedb
 
 import android.app.Application
-import com.imanancin.mymoviedb.core.di.*
-
+import com.imanancin.core.di.databaseModule
+import com.imanancin.core.di.networkModule
+import com.imanancin.core.di.repositoryModule
+import com.imanancin.core.di.useCaseModule
+import com.imanancin.mymoviedb.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,7 +25,7 @@ class MyApplication: Application() {
                     networkModule,
                     useCaseModule,
                     repositoryModule,
-                    viewModelmodule,
+                    appModule
                     )
             )
         }
