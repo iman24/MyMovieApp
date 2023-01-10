@@ -2,7 +2,7 @@ package com.imanancin.mymoviedb.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as DynamicNavHostFragment
         val navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         setupActionBarWithNavController(navController, AppBarConfiguration(navController.graph))

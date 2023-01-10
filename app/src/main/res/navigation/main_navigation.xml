@@ -16,6 +16,7 @@
     </fragment>
 
     <fragment
+        app:moduleName="favorite"
         android:id="@+id/favoriteFragment"
         android:name="com.imanancin.favorite.ui.FavoriteFragment"
         android:label="fragment_home"
