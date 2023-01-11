@@ -15,11 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMovieDb"
         tools:targetApi="31">
-        <activity-alias
-            android:name="leakcanary.internal.activity.LeakLauncherActivity"
-            android:exported="true"
-            android:targetActivity="leakcanary.internal.activity.LeakActivity"
-            tools:node="merge" />
         <activity
             android:parentActivityName=".ui.home.HomeActivity"
             android:name=".ui.detail.DetailActivity"

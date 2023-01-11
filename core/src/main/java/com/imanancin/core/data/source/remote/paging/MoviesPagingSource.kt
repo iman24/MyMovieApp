@@ -23,7 +23,6 @@ class MoviesPagingSource(val apiService: ApiService, val movieType: MovieType) :
             val response: ListMovieResponse =  when(movieType) {
                 MovieType.NOW_PLAYING -> apiService.getNowPlayingMovies(page = pageIndex)
                 MovieType.TOP_RATED -> apiService.getTopRatedMovies(page = pageIndex)
-                MovieType.SEARCH -> apiService.getTopRatedMovies(page = pageIndex)
                 MovieType.POPULAR -> apiService.getPopularMovies(page = pageIndex)
                 MovieType.UPCOMING -> apiService.getUpComingMovies(page = pageIndex)
             }

@@ -20,11 +20,11 @@ class AboutFragment : Fragment() {
     ): View? {
 
         _binding = FragmentAboutBinding.inflate(layoutInflater, container, false)
-        return _binding?.root
+        return binding?.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

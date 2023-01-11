@@ -3,6 +3,7 @@ package com.imanancin.mymoviedb.ui.detail
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
@@ -48,15 +49,17 @@ class DetailActivity : AppCompatActivity() {
 
             isFavorite.observe(this@DetailActivity) {
                 if(it == true) {
-                    binding.addToFavorite.text = resources.getString(R.string.remove_from_favorite)
-                    binding.addToFavorite.setOnClickListener {
+                    addToFavorite.text = resources.getString(R.string.remove_from_favorite)
+                    addToFavorite.icon = ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_baseline_close_24)
+                    addToFavorite.setOnClickListener {
                         lifecycleScope.launch {
                             viewModel.deleteFavorite(args.movie)
                         }
                     }
                 } else {
-                    binding.addToFavorite.text = resources.getString(R.string.add_to_favorite)
-                    binding.addToFavorite.setOnClickListener {
+                    addToFavorite.text = resources.getString(R.string.add_to_favorite)
+                    addToFavorite.icon = ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_baseline_favorite_24)
+                    addToFavorite.setOnClickListener {
                         lifecycleScope.launch {
                             viewModel.addToFavorite(args.movie)
                         }

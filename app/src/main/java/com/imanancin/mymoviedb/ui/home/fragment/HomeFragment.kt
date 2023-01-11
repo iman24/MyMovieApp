@@ -1,7 +1,6 @@
 package com.imanancin.mymoviedb.ui.home.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,16 +65,13 @@ class HomeFragment : Fragment() {
         currentCategory.value?.let { viewModels.setMovieType(it) }
         currentCategory.value = MovieType.valueOf(MovieType.NOW_PLAYING.name)
         viewModels.movies().observe(viewLifecycleOwner) {
-            Log.e("TAG", "setupAdapter: ", )
             movieAdapter.submitData(lifecycle, it)
         }
     }
 
     private fun setupCategoryUi() {
         val categoryList = MovieType.values()
-        categoryList.filter {
-            it != MovieType.SEARCH
-        }.forEach { movieType ->
+        categoryList.forEach { movieType ->
             val chip = Chip(requireActivity()).apply {
                 currentCategory.observe(viewLifecycleOwner) {
                     isChecked = it == MovieType.valueOf(movieType.name)
@@ -96,8 +92,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding?.rvMovie?.adapter = null
         _binding = null
     }

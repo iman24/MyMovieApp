@@ -41,6 +41,7 @@ class MovieAdapter(
 
             image.load("https://image.tmdb.org/t/p/original${data?.poster}") {
                 crossfade(true)
+                placeholder(R.drawable.placeholder)
             }
             itemView.setOnClickListener {
                 if(data != null) {
